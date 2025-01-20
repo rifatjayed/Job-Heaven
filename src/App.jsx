@@ -1,41 +1,45 @@
-import { useEffect, useState } from "react";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"; // সঠিক প্যাকেজ নাম হতে হবে
 
-import "./App.css";
+import Login from "./components/pages/Login";
+import Home from "./components/pages/Home";
+import Register from "./components/pages/Register";
 
-function App() {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+        <Home></Home>
+      </>
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+      <>
+        <Login></Login>
+      </>
+    ),
+  },
+  {
+    path: "/register",
+    element: (
+      <>
+        <Register></Register>
+      </>
+    ),
+  },
+]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/jobs")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => console.error("Error:", error));
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+const App = () => {
   return (
     <div>
-      <h1>Remote Jobs</h1>
-      <ul>
-        {jobs.map((job) => (
-          <li key={job.id}>
-            <h2>{job.title}</h2>
-            <p>Company: {job.company_name}</p>
-            <p>Category: {job.category}</p>
-            <a href={job.url} target="_blank" rel="noopener noreferrer">
-              View Job
-            </a>
-          </li>
-        ))}
-      </ul>
+      <main className="overflow-x-hidden">
+        <RouterProvider router={router} />
+      </main>
     </div>
   );
-}
+};
 
 export default App;
