@@ -4,12 +4,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"; // рж╕рж
 import Login from "./components/pages/Login";
 import Home from "./components/pages/Home";
 import Register from "./components/pages/Register";
+import SingleJob from "./components/SingleJobCard";
+import JobList from "./components/JobList";
+import Navbar from "./components/Navbar";
+import JobDetails from "./components/JobDetails";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <>
+        <Navbar></Navbar>
         <Home></Home>
       </>
     ),
@@ -18,6 +23,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: (
       <>
+        <Navbar></Navbar>
         <Login></Login>
       </>
     ),
@@ -26,7 +32,26 @@ const router = createBrowserRouter([
     path: "/register",
     element: (
       <>
+        <Navbar></Navbar>
         <Register></Register>
+      </>
+    ),
+  },
+  {
+    path: "/joblist",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <JobList></JobList>
+      </>
+    ),
+  },
+  {
+    path: "//jobs/:jobId",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <JobDetails></JobDetails>
       </>
     ),
   },
