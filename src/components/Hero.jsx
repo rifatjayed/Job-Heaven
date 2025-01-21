@@ -13,12 +13,12 @@ const Hero = () => {
     // API call বা অন্য কোন কাজ এখানে করতে পারেন
   };
   return (
-    <div className="flex flex-row max-h-[598px] px-[120px] bg-[#C599E5] py-[20px] font-poppins">
-      <div className="basis-3/5 flex flex-col	justify-center ">
-        <h1 className="text-[50px] font-medium	 leading-[58px]	mb-[16px]">
+    <div className="flex flex-col lg:flex-row max-h-[598px] px-6 md:px-12 lg:px-[120px] bg-[#C599E5] py-8 md:py-16 lg:py-[20px] font-poppins">
+      <div className=" basis-3/5 flex flex-col	justify-center ">
+        <h1 className="text-[34px] md:text-[40px] lg:text-[50px] font-medium	  leading-[40px] md:leading-[48px] lg:leading-[58px]	mb-[16px]">
           Find a job that aligns with your interests and skills
         </h1>
-        <p className="text-[18px]  font-normal	text-[#5E6670] mb-[25px]">
+        <p className="text-[16px] md:text-[18px] font-normal	text-[#5E6670] mb-[25px]">
           Thousands of jobs in all the leading sector are waiting for you.
         </p>
 
@@ -63,7 +63,7 @@ const Hero = () => {
           </form>
         </div>
       </div>
-      <div className="basis-2/5	">
+      <div className="lg:basis-2/5 hidden lg:flex  mt-8 lg:mt-0  justify-center items-center	">
         <img src={HeroIcon} />
       </div>
     </div>
