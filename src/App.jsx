@@ -8,6 +8,7 @@ import SingleJob from "./components/SingleJobCard";
 import JobList from "./components/JobList";
 import Navbar from "./components/Navbar";
 import JobDetails from "./components/JobDetails";
+import Footer from "./components/Footer";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <Home></Home>
+        <Footer></Footer>
       </>
     ),
   },
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <Login></Login>
+        <Footer></Footer>
       </>
     ),
   },
@@ -34,6 +37,7 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <Register></Register>
+        <Footer></Footer>
       </>
     ),
   },
@@ -43,6 +47,7 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <JobList></JobList>
+        <Footer></Footer>
       </>
     ),
   },
@@ -52,6 +57,7 @@ const router = createBrowserRouter([
       <>
         <Navbar></Navbar>
         <JobDetails></JobDetails>
+        <Footer></Footer>
       </>
     ),
   },
