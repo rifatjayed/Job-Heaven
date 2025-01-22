@@ -58,7 +58,7 @@ const JobDetails = () => {
     //     </button>
     //   )}
     // </div>
-    <div className="mx-[120px]">
+    <div className="mx-[50px] md:mx-[100px] lg:mx-[120px]">
       <div className="flex  items-center">
         <img
           src={job.company_logo_url}
@@ -91,10 +91,18 @@ const JobDetails = () => {
         </div>
       </div>
       <h1 className="mt-[50px] text-[25px] font-bold">Job Description</h1>
-      <p className="text-gray-600 mt-2">{cleanDescription}</p>
-      <h3 className="text-[20px] font-semibold mt-5">
-        Salary :<span>{job.salary}</span>
-      </h3>
+      <p className="text-gray-600 mt-2 text-justify	">{cleanDescription}</p>
+
+      {job.salary ? (
+        <h3 className="text-[20px] font-semibold mt-5">
+          Salary :<span>{job.salary}</span>
+        </h3>
+      ) : (
+        <h3 className="text-[20px] font-semibold mt-5">
+          Salary :<span> Contractual</span>
+        </h3>
+      )}
+
       <h3 className="mt-6 text-[25px] font-semibold">
         Required Skills & Keywords:{" "}
       </h3>
