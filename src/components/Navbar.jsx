@@ -40,14 +40,14 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
+            <li className="text-[18px] font-semibold">
               <Link to="/">Home</Link>
             </li>
 
-            <li>
+            <li className="text-[18px] font-semibold">
               <Link to="/joblist">Find Jobs</Link>
             </li>
-            <li>
+            <li className="text-[18px] font-semibold">
               <Link>About Us</Link>
             </li>
           </ul>

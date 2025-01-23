@@ -1,10 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CiLocationOn, CiSearch } from "react-icons/ci";
 import { JobContext } from "../context/JobProvider";
+import SingleJobCard from "./SingleJobCard";
 
 const JobList = () => {
   const { jobs } = useContext(JobContext);
-  console.log(jobs.length);
+  console.log(jobs.length, "-------------------------------------------");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  const totalPages = Math.ceil(jobs.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = jobs.slice(indexOfFirstItem, indexOfLastItem);
+  console.log(currentItems);
+
+  const startPage = Math.max(1, currentPage - 2);
+  const endPage = Math.min(totalPages, currentPage + 2);
+  const visiblePages = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, i) => startPage + i
+  );
+
   return (
     <div className="mx-[120px] mt-[64px]">
       <h1 className="font-semibold	text-[45px]">Job Search</h1>
@@ -54,6 +77,43 @@ const JobList = () => {
         {/* right section */}
         <div className="basis-8/12">
           <h3>All Jobs({jobs.length})</h3>
+          {currentItems.map((job, index) => (
+            <div
+              key={index}
+              className="p-4 border rounded-lg shadow-md hover:shadow-lg transition bg-[#EFE2F8]"
+            >
+              <SingleJobCard job={job}></SingleJobCard>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Pagination */}
+      <div className="flex justify-center">
+        <div className="btn-group">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="btn"
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          {visiblePages.map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={`btn ${page === currentPage ? "btn-active" : ""}`}
+            >
+              {page}
+            </button>
+          ))}
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="btn"
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
