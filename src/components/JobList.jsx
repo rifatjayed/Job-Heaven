@@ -73,13 +73,15 @@ const JobList = () => {
         </form>
       </div>
       {/* search form */}
-      <div className="flex mt-[100px] ">
+      <div className="md:flex sm:block mt-[100px] ">
         {/* left section */}
+
+        <div></div>
         <div>
           <h3>Filter</h3>
         </div>
 
-        <div className="basis-4/12 bg-[#F2F2F2]	mr-[40px] mt-[50px] rounded-xl p-8">
+        <div className="basis-4/12 bg-[#F2F2F2]	mr-[40px] mt-[50px] rounded-xl p-8 hidden lg:block">
           {/* job type filter */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Job Type:</h2>
@@ -143,7 +145,7 @@ const JobList = () => {
         <div className="basis-8/12">
           <h3>All Jobs({jobs.length})</h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-6 p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4  md:gap-6 p-3 md:p-6">
             {currentItems.map((job, index) => (
               <div
                 key={index}
