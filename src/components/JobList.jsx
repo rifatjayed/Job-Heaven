@@ -6,7 +6,11 @@ import SingleJobCard from "./SingleJobCard";
 const JobList = () => {
   const { jobs } = useContext(JobContext);
 
-  const jobTypes = ["full_time", "part_time", "contract"];
+  const filter = {
+    jobTypes: ["full_time", "part_time", "contract"],
+    jobLocation: ["USA", "India", "Europe", "Pakistan", "Australia"],
+    category: ["Human Resources", "Engineering"],
+  };
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -75,32 +79,11 @@ const JobList = () => {
           <h3>Filter</h3>
         </div>
 
-        {/* <div className="basis-4/12 bg-[#F2F2F2]	">
-          <div className="p-4">
-            <label className="text-lg font-semibold mb-2 block">
-              Job Type:
-            </label>
-            <div className="flex flex-col gap-2">
-              {jobs.job_type.map((type) => (
-                <label key={type.value} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    value={type.value}
-                    // checked={selectedOptions.includes(type.value)}
-                    // onChange={handleCheckboxChange}
-                    className="accent-blue-600"
-                  />
-                  check
-                </label>
-              ))}
-            </div>
-          </div>
-        </div> */}
-
         <div className="basis-4/12 bg-[#F2F2F2]	mr-[40px] mt-[50px] rounded-xl p-8">
+          {/* job type filter */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Job Type:</h2>
-            {jobTypes.map((type) => (
+            {filter.jobTypes.map((type) => (
               <div key={type} className="mb-2">
                 <label>
                   <input
@@ -110,6 +93,47 @@ const JobList = () => {
                     className="mr-2"
                   />
                   {type.replace("_", " ").toUpperCase()}
+                </label>
+              </div>
+            ))}
+          </div>
+
+          <hr className="border-t-2 border-[#ACB2B9] my-10" />
+          {/* job location filter */}
+
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold mb-2">Location</h2>
+            {filter.jobLocation.map((location) => (
+              <div key={location} className="mb-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    // value={type}
+                    // onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  {location}
+                </label>
+              </div>
+            ))}
+          </div>
+
+          <hr className="border-t-2 border-[#ACB2B9] my-10" />
+
+          {/* categorises search filter */}
+
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold mb-2">Job Type:</h2>
+            {filter.category.map((item) => (
+              <div key={item} className="mb-2">
+                <label>
+                  <input
+                    type="checkbox"
+                    // value={type}
+                    // onChange={handleCheckboxChange}
+                    className="mr-2"
+                  />
+                  {item}
                 </label>
               </div>
             ))}
