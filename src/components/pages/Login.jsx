@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import LoginImg from "../../assets/login.png";
 import googleIcon from "../../assets/search.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
+  const [error, setError] = useState();
+  const [success, setSuccess] = useState();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUser(email, password)
+      .then((result) => {
+        setSuccess("Login done");
+        console.log(result);
+      })
+      .catch((error) => {
+        setError("error khyse re");
+        console.log(error);
+      });
   };
 
   return (
@@ -22,7 +40,7 @@ const Login = () => {
             <img className="" src={LoginImg} alt="" />
           </div>
           <div className="card  w-full max-w-sm shrink-0 ">
-            <form className="card-body">
+            <form onSubmit={handleSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-medium	text-[#303030] text-[22px]">
@@ -59,6 +77,9 @@ const Login = () => {
                   </a>
                 </label>
               </div>
+
+              {error && <p className="text-red-500">{error}</p>}
+              {success && <p>{success}</p>}
               <div className="form-control mt-6">
                 <button className="btn bg-[#6300B3] font-bold	text-[22px] text-white">
                   Login
