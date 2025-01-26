@@ -24,16 +24,17 @@ const SingleJobCard = ({ job }) => {
       </div>
       <p className="text-gray-600">{job.location}</p>
       <p className="text-gray-500 mt-2">{job.company}</p>
-      <div className="flex  justify-around">
+      <div className="text-center">
+        {/* flex  justify-around */}
         <Link to={`/jobs/${job.id}`}>
           <button className="mt-4  text-[#303030] px-4 py-2 rounded border border-[#6300B3]">
             View Details
           </button>
         </Link>
 
-        <button className="mt-4  text-white px-4 py-2 rounded bg-[#6300B3]">
+        {/* <button className="mt-4  text-white px-4 py-2 rounded bg-[#6300B3]">
           Apply Now{" "}
-        </button>
+        </button> */}
       </div>
     </div>
   );
