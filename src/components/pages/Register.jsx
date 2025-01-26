@@ -27,7 +27,8 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         setSuccess("user Create Done");
-
+        e.target.reset();
+        navigate("/");
         console.log(result.user);
       })
       .catch((error) => {

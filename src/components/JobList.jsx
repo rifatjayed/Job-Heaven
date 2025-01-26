@@ -76,7 +76,7 @@ const JobList = () => {
       </div>
       {/* search form */}
       <div className="md:flex sm:block mt-[100px] ">
-        <button className="flex items-center">
+        <button className="flex md:hidden items-center ">
           <IoFilter />
           <span className="ml-2">Filter </span>
         </button>

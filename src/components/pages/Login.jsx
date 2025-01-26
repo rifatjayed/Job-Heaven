@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import LoginImg from "../../assets/login.png";
 import googleIcon from "../../assets/search.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [error, setError] = useState();
   const [success, setSuccess] = useState();
 
@@ -17,6 +19,8 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         setSuccess("Login done");
+        e.target.reset();
+        navigate("/");
         console.log(result);
       })
       .catch((error) => {
