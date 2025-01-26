@@ -3,6 +3,10 @@ import LoginImg from "../../assets/login.png";
 import googleIcon from "../../assets/search.png";
 import { Link } from "react-router-dom";
 const Login = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="flex flex-col items-center font-poppins">
       <h1 className="mt-10 text-[45px] text-[#303030] font-semibold	">
@@ -29,6 +33,7 @@ const Login = () => {
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
+                  name="email"
                   required
                 />
               </div>
@@ -41,6 +46,7 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="password"
+                  name="password"
                   className="input input-bordered"
                   required
                 />

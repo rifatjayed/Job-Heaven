@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { CiLocationOn, CiSearch } from "react-icons/ci";
 import { JobContext } from "../context/JobProvider";
 import SingleJobCard from "./SingleJobCard";
+import { IoFilter } from "react-icons/io5";
 
 const JobList = () => {
   const { jobs } = useContext(JobContext);
@@ -12,6 +13,7 @@ const JobList = () => {
     category: ["Human Resources", "Engineering"],
   };
 
+  const [filterMenu, setFilterMenu] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -74,12 +76,16 @@ const JobList = () => {
       </div>
       {/* search form */}
       <div className="md:flex sm:block mt-[100px] ">
+        <button className="flex items-center">
+          <IoFilter />
+          <span className="ml-2">Filter </span>
+        </button>
         {/* left section */}
 
-        <div></div>
+        {/* <div></div>
         <div>
           <h3>Filter</h3>
-        </div>
+        </div> */}
 
         <div className="basis-4/12 bg-[#F2F2F2]	mr-[40px] mt-[50px] rounded-xl p-8 hidden lg:block">
           {/* job type filter */}

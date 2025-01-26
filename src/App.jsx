@@ -52,6 +52,16 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/joblist",
+    element: (
+      <>
+        <Navbar></Navbar>
+        <Register></Register>
+        <Footer></Footer>
+      </>
+    ),
+  },
+  {
     path: "//jobs/:jobId",
     element: (
       <>
