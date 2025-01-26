@@ -1,9 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import { HiMenuAlt1, HiMenuAlt2 } from "react-icons/hi";
+import ResponsiveMenu from "./ResponsiveMenu";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   const handleLogOut = () => {
     logOut()
@@ -19,7 +27,7 @@ const Navbar = () => {
     <div>
       <div className="navbar bg-base-100">
         <div className="navbar-start">
-          <div className="dropdown">
+          {/* <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +59,30 @@ const Navbar = () => {
                 <Link>About Us</Link>
               </li>
             </ul>
-          </div>
+          </div> */}
+
+          {/* mobile hamburger menu */}
+          {showMenu ? (
+            <HiMenuAlt1
+              className="cursor-pointer transition-all md:hidden z-50"
+              onClick={toggleMenu}
+              size={30}
+            ></HiMenuAlt1>
+          ) : (
+            <HiMenuAlt2
+              className="cursor-pointer transition-all md:hidden z-50"
+              onClick={toggleMenu}
+              size={30}
+            ></HiMenuAlt2>
+          )}
           <a className="btn btn-ghost text-xl">Job Heaven</a>
+        </div>
+
+        <div>
+          <ResponsiveMenu
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+          ></ResponsiveMenu>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -71,7 +101,7 @@ const Navbar = () => {
         <div className="navbar-end  ">
           {user ? (
             <>
-              <p>{user.email}</p>
+              {/* <p>{user.email}</p> */}
               <button
                 onClick={handleLogOut}
                 className="bg-[#6300B3] py-[14px] px-[25px] text-white text-[18px] font-semibold	rounded-lg"

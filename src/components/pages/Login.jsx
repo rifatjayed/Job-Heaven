@@ -31,10 +31,10 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center font-poppins">
-      <h1 className="mt-10 text-[45px] text-[#303030] font-semibold	">
+      <h1 className="mt-10 text-[30px] md:text-[45px] text-[#303030] font-semibold	">
         Login to your Account
       </h1>
-      <p className="text-[22px] text-[#5E6670]">
+      <p className="text-[18px] md:text-[22px] text-[#5E6670]">
         Welcome back! Select the below login methods.
       </p>
 

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 // import { AuthContext } from "../../context/AuthProvider";
 // import { AuthContext } from "../Context/AuthProvider";
 
 const Register = () => {
   //   const { createUser = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const { createUser } = useContext(AuthContext);
   console.log(createUser);
 
